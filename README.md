@@ -116,6 +116,7 @@ The project aims to answer the following key questions:
 
 
 ---
+
 ## Questions
 ### 1. Who are the **highest-spending customers** and which sellers do they prefer?
 
@@ -193,7 +194,9 @@ Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be i
 
 
 ---
+
 ### 2. What is the **most frequently purchased product category in 2018** for the top companies?
+
 * Steps
    1.  Identify the top companies for 2018:
    * Filter the dataset to include only purchases from the year 2018.
@@ -308,6 +311,7 @@ plt.legend(title="Customer ",loc="upper right")
 plt.show()
 ```
 ![Total Sales for Top Customers per Category.PNG](images/total_sales_for_top_customers_per_category.PNG)
+
 ####💡 Insights
         * Computer Accessories repeatedly dominate the leaderboard, meaning customers consistently invest in add-ons and 
           peripherals rather than just big-ticket items. This signals a strong ecosystem-driven purchasing pattern.
@@ -317,6 +321,7 @@ plt.show()
           indicating mature, upgrade-oriented buying behavior rather than budget purchases.
 
 ---
+
 ### 4. Which **product category generated the highest revenue each year**?
 
   * Steps
@@ -354,6 +359,7 @@ plt.xlabel("Year")
 plt.show()
    ```
 ![Top_Revenue_Category_per_year.PNG](images/Top_Revenue_Category_per_year.PNG) 
+
 #### 💡 Insights
   * The top revenue category changed from bed_bath_table in 2017 to health_beauty in 2018.
   * This indicates a shift in consumer demand toward health and beauty products in 2018. 
@@ -512,11 +518,12 @@ plt.show()
 
 
 
-#### * 💡 Insights
+####  💡 Insights
 
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
