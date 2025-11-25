@@ -14,6 +14,15 @@ The dataset contains multiple tables:
 * **Sellers** – seller information.
 * **Customers** – customer demographics.
 * **Items Ordered** – individual items in each order.
+  
+## 🛠️ Data Cleaning & Preparation
+
+* Purpose: Ensure accurate calculations and consistent analysis.
+   * Load datasets (orders, order reviews, item orders, products, customers, companies).
+   * Change data types (dates, numeric fields).
+   * Handle missing values and duplicates.
+   * Detect and handle outliers.
+   * Standardize column names for consistency.
 
 ## Analysis Questions
 
@@ -48,39 +57,39 @@ The project aims to answer the following key questions:
 
 ## Analysis Steps
 
-1. **Customer Analysis**
+1. 👤 **Customer Analysis**
 
    * Identify top customers by total purchase value.
    * Visualize customer-company interactions using scatter plots or cross-tabulations.
 
-2. **Company and Product Analysis**
+2. 🏢📦 **Company and Product Analysis**
 
    * Determine top companies by sales per year.
    * Analyze top-selling products for each company.
    * Identify the most purchased product categories per top company.
    * Visualize sales distribution using bar charts and scatter plots.
   
-3. **Customer and Category Analysis**
+3. 👤📦 **Customer and Category Analysis**
 
    * Filter the data to include only top customers.
    * Group their purchases by customer and product category. 
    * Sum total spending for each group. 
    * Sort the results to reveal the highest-spending customer–category combinations.
 
-4. **Delivery Analysis**
+4. ⏱️ **Delivery Analysis**
 
    * Calculate delivery times in days.
    * Group data by purchase month and category to calculate mean review score and mean delivery time.
    * Identify the most rated categories each month.
    * Visualize trends using line plots or dual-axis charts.
 
-5. **Category Performance**
+5. 💰📈 **Category Performance**
 
    * Aggregate total sales by product category and year.
    * Highlight top revenue-generating categories.
    * Visualize trends using stacked bar charts.
 
-6. **Review Analysis**
+6. ⭐📝 **Review Analysis**
 
    * Measure mean review score per product or category to evaluate customer satisfaction.
    * Correlate review scores with delivery times.
@@ -118,7 +127,7 @@ The project aims to answer the following key questions:
 ---
 
 ## Questions
-### 1. Who are the **highest-spending customers** and which sellers do they prefer?
+### 🏢👤 1. Who are the **highest-spending customers** and which sellers do they prefer?
 
 * Steps
   * Merge the tables to create a unified dataset for all analyses.
@@ -195,7 +204,7 @@ Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be i
 
 ---
 
-### 2. What is the **most frequently purchased product category in 2018** for the top companies?
+### 📦📊 2. What is the **most frequently purchased product category in 2018** for the top companies?
 
 * Steps
    1.  Identify the top companies for 2018:
@@ -255,7 +264,7 @@ plt.show()
 
 ---
 
-### 3. Which **products are top-selling** for the highest-value customers?
+### 👑📦 3. Which **products are top-selling** for the highest-value customers?
 
    * Steps 
         * Filter top customers:
@@ -322,7 +331,7 @@ plt.show()
 
 ---
 
-### 4. Which **product category generated the highest revenue each year**?
+### 💰📦 4. Which **product category generated the highest revenue each year**?
 
   * Steps
         * Aggregate sales by year and category:
@@ -368,7 +377,7 @@ plt.show()
 
 
 ---
-### 5. Which **product categories have the fastest delivery times** and how does this vary annually?
+### ⏱️📦 5. Which **product categories have the fastest delivery times** and how does this vary annually?
  * Steps
     1. Calculate delivery time:
         * Compute the delivery time in days by subtracting the order_purchase_timestamp from the                                                  order_delivered_customer_date.
@@ -425,7 +434,7 @@ plt.show()
 ---
 
   
-### 6. **Review & Satisfaction Analysis**
+  ### ⭐📝 6. **Review & Satisfaction Analysis**
 
   ####1. Is delivery time related to review score?
       * Steps
@@ -523,6 +532,7 @@ plt.show()
  * For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3        days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t         necessarily depend on fast delivery for these categories.
   
  * Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December),                cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their         repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
