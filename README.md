@@ -262,6 +262,7 @@ plt.show()
 * Identifies opportunities for cross-promotion if a company wants to expand into categories where competitors lead.
 * Each company’s most purchased category reflects what consumers prioritize per brand, useful for trend analysis.
 
+
 ---
 
 ### 👑📦 3. Which **products are top-selling** for the highest-value customers?
@@ -328,6 +329,7 @@ plt.show()
     stand out but not broad enough to compete category-wide.
   * The spending range (≈ 4080 → 1379) reflects a high-value customer segment that tends to purchase mid-to-high-priced items, 
     indicating mature, upgrade-oriented buying behavior rather than budget purchases.
+
 
 ---
 
@@ -532,6 +534,7 @@ plt.show()
  * For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3        days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t         necessarily depend on fast delivery for these categories.
   
  * Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December),                cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their         repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
