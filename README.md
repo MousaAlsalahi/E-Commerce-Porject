@@ -26,17 +26,20 @@ The project aims to answer the following key questions:
 2. **Company-Category Analysis**
 
    * What is the **most frequently purchased product category in 2018** for the top companies?
-   * Which **products are top-selling** for the highest-value customers?
 
-3. **Revenue Analysis**
+3. **Customer-Category Analysis**
+
+   * Which **products are top-selling** for the highest-value customers?    
+
+4. **Revenue Analysis**
 
    * Which **product category generated the highest revenue each year**?
 
-4. **Delivery Time Analysis**
+5. **Delivery Time Analysis**
 
    * Which **product categories have the fastest delivery times** and how does this vary annually?
 
-5. **Review & Satisfaction Analysis**
+6. **Review & Satisfaction Analysis**
 
    * Which **product categories are most rated each month**?
    * Is there a correlation between **delivery times and review scores**?
@@ -57,21 +60,28 @@ The project aims to answer the following key questions:
    * Analyze top-selling products for each company.
    * Identify the most purchased product categories per top company.
    * Visualize sales distribution using bar charts and scatter plots.
+  
+3. **Customer and Category Analysis**
 
-3. **Delivery Analysis**
+   * Filter the data to include only top customers.
+   * Group their purchases by customer and product category. 
+   * Sum total spending for each group. 
+   * Sort the results to reveal the highest-spending customer–category combinations.
+
+4. **Delivery Analysis**
 
    * Calculate delivery times in days.
    * Group data by purchase month and category to calculate mean review score and mean delivery time.
    * Identify the most rated categories each month.
    * Visualize trends using line plots or dual-axis charts.
 
-4. **Category Performance**
+5. **Category Performance**
 
    * Aggregate total sales by product category and year.
    * Highlight top revenue-generating categories.
    * Visualize trends using stacked bar charts.
 
-5. **Review Analysis**
+6. **Review Analysis**
 
    * Measure mean review score per product or category to evaluate customer satisfaction.
    * Correlate review scores with delivery times.
@@ -109,6 +119,8 @@ The project aims to answer the following key questions:
 ---
 ## Questions
 ### 1. Who are the **highest-spending customers** and which sellers do they prefer?
+
+* Steps
   * Merge the tables to create a unified dataset for all analyses.
   * Identify the top customers by grouping data by customer_name, aggregating total sales per customer, 
     and sorting in descending order to select the top 10.
@@ -184,12 +196,12 @@ Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be i
 ---
 ### 2. What is the **most frequently purchased product category in 2018** for the top companies?
 * Steps
-   * Identify the top companies for 2018:
+   1.  Identify the top companies for 2018:
    * Filter the dataset to include only purchases from the year 2018.
    * Group the data by company_name and aggregate by counting order_id to determine total sales per company.
    * Sort the results in descending order to rank companies by sales and select the top 5 companies.
    * Save the result in top_company_2018.
-   * Analyze top products for these companies:
+   2. Analyze top products for these companies:
    * Filter the merged dataset to include only records corresponding to the top 5 companies.
    * Group the data by company_name and sort by total sales in descending order.
    * For each company, select the top-selling product to identify the key product driving sales.
@@ -241,8 +253,77 @@ plt.show()
 * Each company’s most purchased category reflects what consumers prioritize per brand, useful for trend analysis.
 
 ---
-### 3. Which **product category generated the highest revenue each year**?
-   * Steps
+### 3.  Which **products are top-selling** for the highest-value customers?  
+  
+  * #### Steps
+       1. Filter top customers:
+       *  Filter the merged dataset to include only records for customers present in the top_customers list.
+       2. Aggregate sales by customer and category:
+       *  Group the filtered data by customer_id, customer_name, and product_category_name.
+       *  Aggregate the price column using sum to calculate total sales for each customer-category combination.
+       3. Sort to identify highest spending customers:
+       *  Sort the resulting DataFrame in descending order of total sales.
+       *  This reveals the top customers along with the product categories they spend the most on.
+   
+ #### Code
+ ```
+
+
+customer_product_sales = (
+          # Called merged dataframe then filter it to the top customers
+           merged_data.loc[merged_data["customer_unique_id"].isin(top_customers)]
+          .groupby(["customer_unique_id","customer_name","product_category_name_english"])["price"]
+          .sum()
+          .reset_index()
+)
+
+top_product_for_top_customer = (
+
+          customer_product_sales
+          .sort_values(["price"],ascending=[False])
+
+)
+top_product_for_top_customer
+
+## Cross-TAbulation 
+top_customer_product_cross_tab=(
+    pd.crosstab(top_product_for_top_customer["customer_name"],
+                top_product_for_top_customer["product_category_name_english"])
+)
+top_customer_product_cross_tab
+
+##Visualization  Stacked Bar chart
+
+top_customer_product_fig = top_product_for_top_customer.pivot_table(
+                  index="product_category_name_english",
+                  columns="customer_name",
+                  values="price",
+                  aggfunc="sum",
+                  fill_value=0
+)
+
+top_customer_product_fig.plot(kind="bar",stacked=True,figsize=(10,6))
+plt.ylabel("Total Sales")
+plt.xlabel("Category Name")
+plt.xticks(rotation=45)
+plt.title("Total Sales for top Customers per Category",y=1.1)
+plt.legend(title="Customer ",loc="upper right")
+plt.show()
+```
+![Total Sales for Top customers per Category](images\total_sales_for_top_customers.png)
+
+  💡 Insights
+        * Computer Accessories repeatedly dominate the leaderboard, meaning customers consistently invest in add-ons and 
+          peripherals rather than just big-ticket items. This signals a strong ecosystem-driven purchasing pattern.
+        * The single Auto product that appears in the top list hints at a niche but high-impact item—strong enough to 
+          stand out but not broad enough to compete category-wide.
+        * The spending range (≈ 4080 → 1379) reflects a high-value customer segment that tends to purchase mid-to-high-priced items, 
+          indicating mature, upgrade-oriented buying behavior rather than budget purchases.
+
+---
+### 4. Which **product category generated the highest revenue each year**?
+
+  * Steps
         * Aggregate sales by year and category:
         * Group the merged dataset by purchase_year and product_category_name.
         * Aggregate the price column using sum to calculate total sales per category per year.
@@ -285,7 +366,7 @@ plt.show()
 
 
 ---
-### 4. Which **product categories have the fastest delivery times** and how does this vary annually?
+### 5. Which **product categories have the fastest delivery times** and how does this vary annually?
  * Steps
     1. Calculate delivery time:
         * Compute the delivery time in days by subtracting the order_purchase_timestamp from the                                                  order_delivered_customer_date.
@@ -340,7 +421,7 @@ plt.title("Fastest Delivery per Product Category")
 plt.show()
 ```
 ---
-### 5. Identify the top-selling products for the highest-value customers.
+### 6. Identify the top-selling products for the highest-value customers.
     * Steps 
         * Filter top customers:
         * Filter the merged dataset to include only records for customers present in the top_customers list.
@@ -492,6 +573,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
