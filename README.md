@@ -108,7 +108,7 @@ The project aims to answer the following key questions:
 
 
 ## Questions
-1. Who are the **highest-spending customers** and which sellers do they prefer?
+### 1. Who are the **highest-spending customers** and which sellers do they prefer?
   * Merge the tables to create a unified dataset for all analyses.
   * Identify the top customers by grouping data by customer_name, aggregating total sales per customer, 
     and sorting in descending order to select the top 10.
@@ -117,7 +117,7 @@ The project aims to answer the following key questions:
    ensuring a clear view of customer-company relationships.
   * Visualize the relationships using a cross-tabulation to show which customers are associated with which companies.
   * Use a scatter plot to present the customer-company interactions in a clear and quickly understandable way.
-### The code
+#### The code
 
 ```
 merged_data = (
@@ -169,7 +169,7 @@ plt.show()
  ```
 ![companies per top customers](images/companies_pertocustomers.PNG)
 
-### Insights 
+#### Insights 
 Brent Jackson and Johnny Lee appear twice, meaning these companies serve multiple top customers. 
 ✅ Insight: Some companies have higher engagement with top customers — could be key accounts.
 
@@ -180,7 +180,7 @@ Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be i
 
 🎯 Strategy: Focus on these companies for retention, upselling, or special offers.
 
-## 2. What is the **most frequently purchased product category in 2018** for the top companies?
+### 2. What is the **most frequently purchased product category in 2018** for the top companies?
 * Steps
    * Identify the top companies for 2018:
    * Filter the dataset to include only purchases from the year 2018.
@@ -489,6 +489,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
