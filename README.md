@@ -238,7 +238,7 @@ plt.show()
 * Identifies opportunities for cross-promotion if a company wants to expand into categories where competitors lead.
 * Each company’s most purchased category reflects what consumers prioritize per brand, useful for trend analysis.
 
-3. Which **product category generated the highest revenue each year**?
+### 3. Which **product category generated the highest revenue each year**?
    * Steps
         * Aggregate sales by year and category:
         * Group the merged dataset by purchase_year and product_category_name.
@@ -283,10 +283,10 @@ plt.show()
 
 
 
-## 5. Which **product categories have the fastest delivery times** and how does this vary annually?
+### 4. Which **product categories have the fastest delivery times** and how does this vary annually?
  * Steps
     1. Calculate delivery time:
-        * Compute the delivery time in days by subtracting the order_purchase_timestamp from the                                       order_delivered_customer_date.
+        * Compute the delivery time in days by subtracting the order_purchase_timestamp from the                                                  order_delivered_customer_date.
         * Store the result as a new column delivery_days.
     2. Merge and analyze data:
         * Merge the orders table with related tables such as products and items_order to create a unified dataset.        
@@ -337,7 +337,7 @@ plt.legend(title="Purchase Year", loc="upper right")
 plt.title("Fastest Delivery per Product Category")
 plt.show()
 ```
-## 5. Identify the top-selling products for the highest-value customers.
+### 5. Identify the top-selling products for the highest-value customers.
     * Steps 
         * Filter top customers:
         * Filter the merged dataset to include only records for customers present in the top_customers list.
@@ -393,7 +393,7 @@ plt.show()
 ```
 ![Total Sales for Top Customers per Category.PNG](images/total_sales_for_top_customers_per_category.PNG)
   
-## 6. **Review & Satisfaction Analysis**
+### 6. **Review & Satisfaction Analysis**
   1. Is delivery time related to review score?
       * Steps
           * compute delivery time in days by subtracting the order purchase timestamp from the customer delivery timestamp.
@@ -420,7 +420,7 @@ category_score_delivery = (
 category_score_delivery
 ````
 
-2.Which product categories are most rated each month?
+### 2.Which product categories are most rated each month?
 ```
    # top rated categories each month 
 top_categories_each_month = (
@@ -431,7 +431,7 @@ top_categories_each_month = (
 top_categories_each_month
 
 ```
-3. What is The relationship between review score and delivery time
+### 3. What is The relationship between review score and delivery time
  ```
 # Visualizing the RElationship between the review score and delivery time
 
@@ -489,6 +489,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
