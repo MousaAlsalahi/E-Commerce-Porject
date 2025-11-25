@@ -425,12 +425,15 @@ plt.legend(loc="upper left")
 plt.tight_layout()
 plt.show()
    ```
-![customer_satisfaction_and_delivery_over_time.PNG][image/customer_satisfaction_and_delivery_over_time.PNG]
- ####💡 Insights
+![customer_satisfaction_and_delivery_over_time.PNG](image/customer_satisfaction_and_delivery_over_time.PNG)
+
+
+####* 💡 Insights
 
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
