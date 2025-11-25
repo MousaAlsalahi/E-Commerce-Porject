@@ -391,9 +391,8 @@ plt.title("Total Sales for top Customers per Category",y=1.1)
 plt.legend(title="Customer ",loc="upper right")
 plt.show()
 ```
-![Total Sales for Top Customers per Category](images/total_sales_for_top_customers_per_category)
-
-        
+![Total Sales for Top Customers per Category.PNG](images/total_sales_for_top_customers_per_category.PNG)
+  
 6. **Review & Satisfaction Analysis**
   1. Is delivery time related to review score?
       * Steps
@@ -490,6 +489,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
