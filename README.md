@@ -247,7 +247,7 @@ plt.show()
 ```
 ![Top Product For Top Companies](images/TopProduct_forTopCompanies.PNG)
 
-#### Insights 
+#### 💡 Insights 
 * Each top company appears to focus on a different product category, showing clear specialization. Benjamin Jordan → watches_gifts        Dorothy Luna → bed_bath_table Shawn Riley → furniture_decor
 * Companies can optimize inventory and marketing based on their strongest category.
 * Identifies opportunities for cross-promotion if a company wants to expand into categories where competitors lead.
@@ -312,13 +312,13 @@ plt.show()
 ```
 ![Total Sales for Top Customers per Category.PNG](images/total_sales_for_top_customers_per_category.PNG)
 
-####💡 Insights
-        * Computer Accessories repeatedly dominate the leaderboard, meaning customers consistently invest in add-ons and 
-          peripherals rather than just big-ticket items. This signals a strong ecosystem-driven purchasing pattern.
-        * The single Auto product that appears in the top list hints at a niche but high-impact item—strong enough to 
-          stand out but not broad enough to compete category-wide.
-        * The spending range (≈ 4080 → 1379) reflects a high-value customer segment that tends to purchase mid-to-high-priced items, 
-          indicating mature, upgrade-oriented buying behavior rather than budget purchases.
+#### 💡 Insights
+  * Computer Accessories repeatedly dominate the leaderboard, meaning customers consistently invest in add-ons and 
+    peripherals rather than just big-ticket items. This signals a strong ecosystem-driven purchasing pattern.
+  * The single Auto product that appears in the top list hints at a niche but high-impact item—strong enough to 
+    stand out but not broad enough to compete category-wide.
+  * The spending range (≈ 4080 → 1379) reflects a high-value customer segment that tends to purchase mid-to-high-priced items, 
+    indicating mature, upgrade-oriented buying behavior rather than budget purchases.
 
 ---
 
@@ -520,9 +520,10 @@ plt.show()
 
 ####  💡 Insights
 
-For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
+ * For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3        days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t         necessarily depend on fast delivery for these categories.
+  
+ * Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December),                cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their         repeated presence suggests sustained customer satisfaction across different periods.
 
-Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
 
 
 
