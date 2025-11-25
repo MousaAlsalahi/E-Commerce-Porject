@@ -102,3 +102,39 @@ The project aims to answer the following key questions:
 * Product categories with the fastest delivery times per year.
 * Top-rated products and categories each month, including trends in customer satisfaction.
 * Correlation between delivery times and review scores.
+
+* ```   merged_data = (
+        orders_df.merge(items_order_df,on="order_id",suffixes=["_order","_items"])
+        .merge(sellers_df,on="seller_id",suffixes=["_orders_merge","_sellers"])
+        .merge(products_df,on="product_id",suffixes=["","_products"])
+        .merge(customers_df,on="customer_id",suffixes=["","_customers"])
+        .merge(product_english_name_df,on="product_category_name",suffixes=["","_naming"])
+)
+
+top_customers = (
+
+                merged_data
+                .groupby(["customer_unique_id"])["price"]
+                .sum()
+                .sort_values(ascending=False)
+                .head(10)
+                .index
+)
+top_companies_customers = (
+
+                           
+                           merged_data.loc[merged_data["customer_unique_id"].isin(top_customers)]\
+                           [["customer_unique_id","company_name","customer_name"]]\
+                           .groupby("customer_name",as_index=False)["company_name"]\
+                           .unique()
+                           
+
+)
+
+top_companies_customers["company_name"] = top_companies_customers["company_name"].apply(lambda x: ", ".join(x))
+top_companies_customers
+
+merged_data.head(1)
+
+```
+
