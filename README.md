@@ -180,6 +180,8 @@ Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be i
 
 🎯 Strategy: Focus on these companies for retention, upselling, or special offers.
 
+
+---
 ### 2. What is the **most frequently purchased product category in 2018** for the top companies?
 * Steps
    * Identify the top companies for 2018:
@@ -237,8 +239,8 @@ plt.show()
 * Companies can optimize inventory and marketing based on their strongest category.
 * Identifies opportunities for cross-promotion if a company wants to expand into categories where competitors lead.
 * Each company’s most purchased category reflects what consumers prioritize per brand, useful for trend analysis.
-  ---
 
+---
 ### 3. Which **product category generated the highest revenue each year**?
    * Steps
         * Aggregate sales by year and category:
@@ -283,7 +285,6 @@ plt.show()
 
 
 ---
-
 ### 4. Which **product categories have the fastest delivery times** and how does this vary annually?
  * Steps
     1. Calculate delivery time:
@@ -491,6 +492,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
