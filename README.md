@@ -117,7 +117,7 @@ The project aims to answer the following key questions:
    ensuring a clear view of customer-company relationships.
   * Visualize the relationships using a cross-tabulation to show which customers are associated with which companies.
   * Use a scatter plot to present the customer-company interactions in a clear and quickly understandable way.
-- The code
+### The code
 
 ```
 merged_data = (
@@ -180,7 +180,7 @@ Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be i
 
 🎯 Strategy: Focus on these companies for retention, upselling, or special offers.
 
-### 2. What is the **most frequently purchased product category in 2018** for the top companies?
+## 2. What is the **most frequently purchased product category in 2018** for the top companies?
 * Steps
    * Identify the top companies for 2018:
    * Filter the dataset to include only purchases from the year 2018.
@@ -283,7 +283,7 @@ plt.show()
 
 
 
-### 5. Which **product categories have the fastest delivery times** and how does this vary annually?
+## 5. Which **product categories have the fastest delivery times** and how does this vary annually?
  * Steps
     1. Calculate delivery time:
         * Compute the delivery time in days by subtracting the order_purchase_timestamp from the                                       order_delivered_customer_date.
@@ -337,7 +337,7 @@ plt.legend(title="Purchase Year", loc="upper right")
 plt.title("Fastest Delivery per Product Category")
 plt.show()
 ```
-###5. Identify the top-selling products for the highest-value customers.
+## 5. Identify the top-selling products for the highest-value customers.
     * Steps 
         * Filter top customers:
         * Filter the merged dataset to include only records for customers present in the top_customers list.
@@ -393,7 +393,7 @@ plt.show()
 ```
 ![Total Sales for Top Customers per Category.PNG](images/total_sales_for_top_customers_per_category.PNG)
   
-6. **Review & Satisfaction Analysis**
+## 6. **Review & Satisfaction Analysis**
   1. Is delivery time related to review score?
       * Steps
           * compute delivery time in days by subtracting the order purchase timestamp from the customer delivery timestamp.
@@ -484,11 +484,12 @@ plt.show()
 
 
 
-####* 💡 Insights
+#### * 💡 Insights
 
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
