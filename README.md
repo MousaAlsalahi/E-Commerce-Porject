@@ -112,14 +112,14 @@ The project aims to answer the following key questions:
 
 ## Questions
 1. Who are the **highest-spending customers** and which sellers do they prefer?
-  *Merge the tables to create a unified dataset for all analyses.
-  *Identify the top customers by grouping data by customer_name, aggregating total sales per customer, 
+  * Merge the tables to create a unified dataset for all analyses.
+  * Identify the top customers by grouping data by customer_name, aggregating total sales per customer, 
     and sorting in descending order to select the top 10.
-  *Filter the merged dataset to retain only records corresponding to the top customers.
-  *Group the filtered data by customer name to account for multiple orders from the same company, 
+  * Filter the merged dataset to retain only records corresponding to the top customers.
+  * Group the filtered data by customer name to account for multiple orders from the same company, 
    ensuring a clear view of customer-company relationships.
-  *Visualize the relationships using a cross-tabulation to show which customers are associated with which companies.
-  *Use a scatter plot to present the customer-company interactions in a clear and quickly understandable way.
+  * Visualize the relationships using a cross-tabulation to show which customers are associated with which companies.
+  * Use a scatter plot to present the customer-company interactions in a clear and quickly understandable way.
 - The code
 
 ```
@@ -232,13 +232,118 @@ plt.title("Top products for Top Companies")
 plt.legend(title="Category",loc="upper right")
 plt.show()
 ```
+[Top Product For Top Companies](images/TopProduct_forTopCompanies.PNG)
+
 ![companies per top customers](C:\Users\Mousa\Documents\_Data_Analysis_Projects\brzilian ecommerce\photo analysis\Top Products for Top Companies)
 #### Insights 
 * Each top company appears to focus on a different product category, showing clear specialization. Benjamin Jordan → watches_gifts        Dorothy Luna → bed_bath_table Shawn Riley → furniture_decor
 * Companies can optimize inventory and marketing based on their strongest category.
 * Identifies opportunities for cross-promotion if a company wants to expand into categories where competitors lead.
 * Each company’s most purchased category reflects what consumers prioritize per brand, useful for trend analysis.
+
+3. Which **product category generated the highest revenue each year**?
+   * Steps
+        * Aggregate sales by year and category:
+        * Group the merged dataset by purchase_year and product_category_name.
+        * Aggregate the price column using sum to calculate total sales per category per year.
+        * Sort the results first by purchase_year and then by price in descending order.
+        * Select the top-selling category for each year to identify the category driving the highest revenue annually.
+    #### Code
+   
+```
+top_category_revenue=(
+         merged_data
+        .groupby(["purchase_year","product_category_name_english"])["price"].sum()
+        .reset_index()
+        .sort_values(["purchase_year","price"],ascending=[True,False])
+)
+
+top_category_revenue=top_category_revenue.groupby("purchase_year").head(1)
+top_category_revenue
+
+
+# Visualize the top revenue-generating product category for each year.
+sns.scatterplot(
+    data=top_category_revenue,
+    x="purchase_year",
+    y="price",
+    hue="product_category_name_english",
+)
+plt.ylabel("Total Sales")
+plt.legend(title="Category",loc="lower right")
+plt.title("Top Revenue Category per Year")
+plt.xticks(ticks=[2016,2017,2018],labels=['2016','2017','2018'])
+plt.xlabel("Year")
+plt.show()
+   ```
+        
+#### 💡 Insights
+  * The top revenue category changed from bed_bath_table in 2017 to health_beauty in 2018.
+  * This indicates a shift in consumer demand toward health and beauty products in 2018. 
+  * Businesses selling furniture and home goods may need to diversify offerings or promote new categories. 
+  * Health and beauty-focused companies may capitalize on increased demand with targeted promotions.
+
+
+
+
+### 5. Which **product categories have the fastest delivery times** and how does this vary annually?
+ * Steps
+    1. Calculate delivery time:
+        * Compute the delivery time in days by subtracting the order_purchase_timestamp from the                                       order_delivered_customer_date.
+        * Store the result as a new column delivery_days.
+    2. Merge and analyze data:
+        * Merge the orders table with related tables such as products and items_order to create a unified dataset.        
+        * Group the merged dataset by purchase_year and product_category_name.        
+        * Aggregate the mean delivery time for each group.        
+        * Sort the results by purchase_year in ascending order.        
+        * Select the top category for each year based on the shortest average delivery time.
+#### Code 
+
+```
+orders_df["delvery_days"]=round((
+    orders_df["order_delivered_customer_date"]-orders_df["order_purchase_timestamp"]
+).dt.days,2)
+
+
+fastest_category= (
+                  orders_df.merge(items_order_df,on="order_id")
+                  .merge(products_df,on="product_id")
+                  .merge(product_english_name_df,on="product_category_name",suffixes=["","_naming"])
+                  .groupby(["purchase_year","product_category_name_english"])["delvery_days"]
+                  .mean()
+                  .reset_index()
+                  .sort_values("purchase_year",ascending=False)
+                  .reset_index()
+
+
+)
+fastest_category.groupby("purchase_year").head(1)
+
+# Visualize the product categories with the fastest average delivery time for each year
+fastest_category = (
+    fastest_category
+    .groupby("purchase_year")
+    .head(1)
+)
+
+sns.barplot(
+    data=fastest_category,
+    x="product_category_name_english",
+    y="delvery_days",
+    hue="purchase_year",
+    palette="viridis"
+)
+
+plt.ylabel("Delivery Time (days)")
+plt.xlabel("Product Category")
+plt.legend(title="Purchase Year", loc="upper right")
+plt.title("Fastest Delivery per Product Category")
+plt.show()
+```
+
+6. **Review & Satisfaction Analysis**
   
+
 
 
 
