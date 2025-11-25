@@ -273,7 +273,7 @@ plt.xticks(ticks=[2016,2017,2018],labels=['2016','2017','2018'])
 plt.xlabel("Year")
 plt.show()
    ```
-![Top_Revenue_Category_per_year.PNG](image/Top_Revenue_Category_per_year.PNG) 
+![Top_Revenue_Category_per_year.PNG](images/Top_Revenue_Category_per_year.PNG) 
 #### 💡 Insights
   * The top revenue category changed from bed_bath_table in 2017 to health_beauty in 2018.
   * This indicates a shift in consumer demand toward health and beauty products in 2018. 
@@ -425,7 +425,8 @@ plt.legend(loc="upper left")
 plt.tight_layout()
 plt.show()
    ```
-![customer_satisfaction_and_delivery_over_time.PNG](image/customer_satisfaction_and_delivery_over_time.PNG)
+![customer_satisfaction_and_delivery_over_time.PNG](images/customer_satisfaction_and_delivery_over_time.PNG)
+
 
 
 ####* 💡 Insights
@@ -433,6 +434,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
