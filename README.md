@@ -170,8 +170,7 @@ plt.xticks(rotation=45)
 plt.show()
 
  ```
-![companies per top customers](E-Commerce-Porject/images
-/companies_per_top _customers.PNG
+![companies per top customers](/images/companies_per_top _customers.PNG
 )
 
 ### Insights 
@@ -241,6 +240,7 @@ plt.show()
 * Identifies opportunities for cross-promotion if a company wants to expand into categories where competitors lead.
 * Each company’s most purchased category reflects what consumers prioritize per brand, useful for trend analysis.
   
+
 
 
 
