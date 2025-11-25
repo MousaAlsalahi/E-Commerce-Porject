@@ -182,14 +182,14 @@ plt.show()
 
 #### Insights 
 Brent Jackson and Johnny Lee appear twice, meaning these companies serve multiple top customers. 
-✅ Insight: Some companies have higher engagement with top customers — could be key accounts.
+* ✅ Insight: Some companies have higher engagement with top customers — could be key accounts.
 
 Most other customers are linked to a single company. 
-✅ Insight: Many top customers stick to one company, suggesting loyalty or strong preference.
+* ✅ Insight: Many top customers stick to one company, suggesting loyalty or strong preference.
 
 Companies that serve multiple top customers (Brent Jackson, Johnny Lee) may be important revenue sources.
 
-🎯 Strategy: Focus on these companies for retention, upselling, or special offers.
+* 🎯 Strategy: Focus on these companies for retention, upselling, or special offers.
 
 
 ---
@@ -244,7 +244,6 @@ plt.show()
 ```
 ![Top Product For Top Companies](images/TopProduct_forTopCompanies.PNG)
 
-![companies per top customers](C:\Users\Mousa\Documents\_Data_Analysis_Projects\brzilian ecommerce\photo analysis\Top Products for Top Companies)
 #### Insights 
 * Each top company appears to focus on a different product category, showing clear specialization. Benjamin Jordan → watches_gifts        Dorothy Luna → bed_bath_table Shawn Riley → furniture_decor
 * Companies can optimize inventory and marketing based on their strongest category.
@@ -309,7 +308,7 @@ plt.legend(title="Customer ",loc="upper right")
 plt.show()
 ```
 ![Total Sales for Top Customers per Category.PNG](images/total_sales_for_top_customers_per_category.PNG)
-  💡 Insights
+####💡 Insights
         * Computer Accessories repeatedly dominate the leaderboard, meaning customers consistently invest in add-ons and 
           peripherals rather than just big-ticket items. This signals a strong ecosystem-driven purchasing pattern.
         * The single Auto product that appears in the top list hints at a niche but high-impact item—strong enough to 
@@ -518,6 +517,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
