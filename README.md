@@ -104,11 +104,8 @@ The project aims to answer the following key questions:
 * Correlation between delivery times and review scores.
 
 ### Analysis Question 
-1. d
-* Steps
 
-### Code
-* ```
+
 
 ## Questions
 1. Who are the **highest-spending customers** and which sellers do they prefer?
@@ -232,7 +229,7 @@ plt.title("Top products for Top Companies")
 plt.legend(title="Category",loc="upper right")
 plt.show()
 ```
-[Top Product For Top Companies](images/TopProduct_forTopCompanies.PNG)
+![Top Product For Top Companies](images/TopProduct_forTopCompanies.PNG)
 
 ![companies per top customers](C:\Users\Mousa\Documents\_Data_Analysis_Projects\brzilian ecommerce\photo analysis\Top Products for Top Companies)
 #### Insights 
@@ -343,6 +340,7 @@ plt.show()
 
 6. **Review & Satisfaction Analysis**
   
+
 
 
 
