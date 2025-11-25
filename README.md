@@ -273,7 +273,7 @@ plt.xticks(ticks=[2016,2017,2018],labels=['2016','2017','2018'])
 plt.xlabel("Year")
 plt.show()
    ```
-        
+![Top_Revenue_Category_per_year.PNG](image/Top_Revenue_Category_per_year.PNG) 
 #### 💡 Insights
   * The top revenue category changed from bed_bath_table in 2017 to health_beauty in 2018.
   * This indicates a shift in consumer demand toward health and beauty products in 2018. 
@@ -339,11 +339,98 @@ plt.show()
 ```
 
 6. **Review & Satisfaction Analysis**
-  
+  1. Is delivery time related to review score?
+      * Steps
+          * compute delivery time in days by subtracting the order purchase timestamp from the customer delivery timestamp.
+          * group the merged dataset by purchase month and product category. Calculate the average review score and the                 average delivery time for each group, then sort the results by month (ascending) and review score (descending)              so the top-rated categories appear first within each month.
+          * At this point, you have both the mean review score and mean delivery speed for every category across all months.
+          * extract the highest-rated category in each month to identify the monthly leaders in customer satisfaction.
+          * To put it all together, visualize the monthly mean review score and delivery time—using dual axes—so the                    relationship between faster delivery and higher satisfaction becomes clear on a single timeline.
+#### Code
+```
+merged_data["delvery_days"]=round((
+    merged_data["order_delivered_customer_date"]-merged_data["order_purchase_timestamp"]
+).dt.days,2)
 
 
+category_score_delivery = (
+          merged_data
+          .groupby(["purchase_month","product_category_name_english"])
+          .agg(review_score=("review_score","mean"),
+               delivery_speed=("delvery_days","mean"))
+          .sort_values(["purchase_month","review_score"],ascending=[True,False])
+          .reset_index()
+)
 
+category_score_delivery
+````
 
+2.Which product categories are most rated each month?
+```
+   # top rated categories each month 
+top_categories_each_month = (
+    
+                            category_score_delivery
+                            .groupby("purchase_month")
+).head(1)
+top_categories_each_month
+
+```
+3. What is The relationship between review score and delivery time
+ ```
+# Visualizing the RElationship between the review score and delivery time
+
+category_score_delivery_monthly=(
+    category_score_delivery.groupby("purchase_month")
+    .agg(review_score=("review_score","mean"),
+          delivery_speed=("delivery_speed","mean"))
+    .reset_index()
+)
+
+fig,ax1=plt.subplots(figsize=(12,6))
+
+sns.lineplot(
+            category_score_delivery_monthly,
+             x="purchase_month",
+             y="review_score",
+             color="blue",
+             marker="o",
+             label="Average Review Score",
+             ax=ax1
+
+             )
+
+ax1.set_ylabel("Review Score",color="blue")
+ax1.tick_params(axis='y', labelcolor="tab:blue", color="blue")
+
+ax2 = ax1.twinx()
+sns.lineplot(
+             category_score_delivery_monthly,
+             x="purchase_month",
+             color="red",
+             y="delivery_speed",
+             marker="o",
+             label="Average Delivery Days",
+             ax=ax2
+             )
+
+ax2.tick_params(axis='y', labelcolor="tab:red", color="red")
+ax2.set_ylabel("Delivery Days", color ="red")
+plt.title("Customer Satisfaction and Delivery Speed Over Time")
+plt.xlabel("Purchase Month")
+plt.ylabel("Delivery Days")
+plt.legend()
+plt.xticks(rotation=45,ticks=range(1,13),labels=labels)
+plt.legend(loc="upper left")
+plt.tight_layout()
+plt.show()
+   ```
+![customer_satisfaction_and_delivery_over_time.PNG][image/customer_satisfaction_and_delivery_over_time.PNG]
+ ####💡 Insights
+
+For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
+
+Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
 
 
 
