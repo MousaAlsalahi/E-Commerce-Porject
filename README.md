@@ -337,7 +337,63 @@ plt.legend(title="Purchase Year", loc="upper right")
 plt.title("Fastest Delivery per Product Category")
 plt.show()
 ```
+###5. Identify the top-selling products for the highest-value customers.
+    * Steps 
+        * Filter top customers:
+        * Filter the merged dataset to include only records for customers present in the top_customers list.
+        * Aggregate sales by customer and category:
+        * Group the filtered data by customer_id, customer_name, and product_category_name.
+        * Aggregate the price column using sum to calculate total sales for each customer-category combination.
+        * Sort to identify highest spending customers:
+        * Sort the resulting DataFrame in descending order of total sales.
+        * This reveals the top customers along with the product categories they spend the most on.
+#### Code
 
+```
+customer_product_sales = (
+          # Called merged dataframe then filter it to the top customers
+           merged_data.loc[merged_data["customer_unique_id"].isin(top_customers)]
+          .groupby(["customer_unique_id","customer_name","product_category_name_english"])["price"]
+          .sum()
+          .reset_index()
+)
+
+top_product_for_top_customer = (
+
+          customer_product_sales
+          .sort_values(["price"],ascending=[False])
+
+)
+top_product_for_top_customer
+
+
+top_customer_product_cross_tab=(
+    pd.crosstab(top_product_for_top_customer["customer_name"],
+                top_product_for_top_customer["product_category_name_english"])
+)
+top_customer_product_cross_tab
+
+# Visualization 
+
+top_customer_product_fig = top_product_for_top_customer.pivot_table(
+                  index="product_category_name_english",
+                  columns="customer_name",
+                  values="price",
+                  aggfunc="sum",
+                  fill_value=0
+)
+
+top_customer_product_fig.plot(kind="bar",stacked=True,figsize=(10,6))
+plt.ylabel("Total Sales")
+plt.xlabel("Category Name")
+plt.xticks(rotation=45)
+plt.title("Total Sales for top Customers per Category",y=1.1)
+plt.legend(title="Customer ",loc="upper right")
+plt.show()
+```
+![Total Sales for Top Customers per Category](images/total_sales_for_top_customers_per_category)
+
+        
 6. **Review & Satisfaction Analysis**
   1. Is delivery time related to review score?
       * Steps
@@ -434,6 +490,7 @@ plt.show()
 For the highest-rated categories each month, there is no stable delivery-speed pattern. Delivery times swing widely—from about 3 days in January to 16 days in February, then dropping to around 1 day in March. This inconsistency shows that top ratings don’t necessarily depend on fast delivery for these categories.
 
 Only a few categories appear more than once among the monthly top-rated ones. These include art (November and December), cds_dvds_musicals (2 months), books_imported (3 months), christmas_supplies (May), and cine_photo (January and February). Their repeated presence suggests sustained customer satisfaction across different periods.
+
 
 
 
